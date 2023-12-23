@@ -1,7 +1,7 @@
 import streamlit as st
 from PIL import Image
 import os
-from p.key import API_KEY
+from .p import key
 import google.generativeai as genai
 
 
@@ -18,7 +18,7 @@ def get_api_key():
     return text
 
 def model(img): 
-    genai.configure(api_key =API_KEY )
+    genai.configure(api_key =key.API_KEY )
     model = genai.GenerativeModel("gemini-pro-vision")
     response =  model.generate_content(img)
     return response.text
